@@ -35,23 +35,29 @@ class HomePageTest(unittest.TestCase):
         self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()),options=options)
         self.driver.maximize_window()
 
-    def test_google_search(self):
+    def test_sign_in(self):
         # Load the Google homepage
         self.driver.get(Config.BASE_URL)
-        time.sleep(10)
-
-
-        # # Find the search input element by name
-        # search_box = self.driver.find_element("name", "q")
-
-        # # Type a search query
-        # search_box.send_keys("Selenium with Python")
-
-        # # Press Enter to perform the search
-        # search_box.send_keys(Keys.RETURN)
-
-        # # Verify that the search results page is displayed
-        # self.assertIn("Selenium with Python", self.driver.title)
+        time.sleep(2)
+        # Find the button by its ID
+        sign_in_button_id = "sign-in-button"
+        button = self.driver.find_element(By.ID, sign_in_button_id)
+        # Click the button
+        button.click()
+        time.sleep(3)  
+        seed_input = self.driver.find_element(By.XPATH, "//*[contains(@name, 'seed')]")     
+        seed = "//Alice"
+        seed_input.send_keys(seed)
+        seed_input.send_keys(Keys.RETURN)
+        password_input = self.driver.find_element(By.XPATH, "//*[contains(@name, 'password')]")
+        password = "12345"
+        password_input.send_keys(password) 
+        password_input.send_keys(Keys.RETURN)
+        time.sleep(3)  
+        seed_submit_button =  self.driver.find_element(By.ID, "seed-submit-button")
+        print(seed_submit_button)
+        seed_submit_button.submit()
+        time.sleep(50)
 
     def tearDown(self):
         # Close the browser window
