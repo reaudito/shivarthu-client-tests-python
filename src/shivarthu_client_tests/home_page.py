@@ -36,16 +36,16 @@ class HomePageTest(unittest.TestCase):
         self.driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()),options=options)
         self.driver.maximize_window()     
 
-    def test_sign_in(self):
-        print("test sign in")
-        sign_in(self, account_info['alice'])        
-        time.sleep(10)
+    # def test_sign_in(self):
+    #     print("test sign in")
+    #     sign_in(self, account_info['alice'])        
+    #     time.sleep(10)
         
     def test_profile_validation(self):
         print("test profile validation")
         sign_in(self, account_info['alice']) 
         add_profile(self, account_info['alice'])
-        time.sleep(10)
+        time.sleep(100)
         
 
     def tearDown(self):
