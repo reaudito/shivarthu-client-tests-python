@@ -58,7 +58,7 @@ def sign_in(self, account):
     # print(seed_submit_button)
     seed_submit_button.submit() 
 
-def add_profile(self, account):
+def add_profile(self):
     self.driver.get(Config.BASE_URL + "/add-profile")
     time.sleep(2)
     name_input = self.driver.find_element(By.XPATH, "//*[contains(@name, 'name')]")  
@@ -90,6 +90,18 @@ def add_profile(self, account):
     
     submit_button = self.driver.find_element(By.XPATH, "//*[contains(@type, 'submit')]")  
     submit_button.submit()
+
+def sign_in_contract(self, account):
+    WebDriverWait(self.driver, 50).until(
+    ec.element_to_be_clickable((By.ID, "input-password"))
+    )
+    input_password = self.driver.find_element(By.ID, "input-password")
+    input_password.send_keys(account["password"])
+    input_password.send_keys(Keys.RETURN)
+    submit_button = self.driver.find_element(By.XPATH, "//*[contains(@type, 'submit')]")  
+    submit_button.submit()
+     
+    
  
     
     
