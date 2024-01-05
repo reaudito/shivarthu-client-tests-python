@@ -21,7 +21,9 @@ from webdriver_manager.firefox import GeckoDriverManager
 import os
 import unittest
 from utils.config import Config
-from utils.functions import sign_in, account_info, add_profile, sign_in_contract
+from utils.profile_validation_functions import add_profile, view_profile_details
+from utils.account_info import account_info
+from utils.common_functions import sign_in, sign_in_contract
 
 
 
@@ -41,12 +43,19 @@ class HomePageTest(unittest.TestCase):
     #     sign_in(self, account_info['alice'])        
     #     time.sleep(10)
         
-    def test_profile_validation(self):
+    def test_add_profile(self):
         print("test profile validation")
         sign_in(self, account_info['alice']) 
         add_profile(self)
         sign_in_contract(self, account_info['alice'])
-        time.sleep(100)
+        time.sleep(20)
+        view_profile_details(self)
+        
+    
+    # def test_add_profile_stake(self):
+    #     print("test add profile stake")
+    #     sign_in(self, account_info['bob'])
+        
         
 
     def tearDown(self):
