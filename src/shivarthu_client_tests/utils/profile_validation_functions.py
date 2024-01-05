@@ -46,11 +46,25 @@ def add_profile(self):
     
     submit_button = self.driver.find_element(By.XPATH, "//*[contains(@type, 'submit')]")  
     submit_button.submit()
+    time.sleep(5)
 
 def view_profile_details(self):
     view_profile_link = self.driver.find_element(By.CLASS_NAME, "view-profile-link")
     view_profile_link.click()
-    time.sleep(20)
+    time.sleep(5)
+
+def add_profile_stake(self, for_account):
+    self.driver.get(Config.BASE_URL + "/add-profile-stake/" + for_account['public_key'])
+    time.sleep(5)
+    stake_input = self.driver.find_element(By.XPATH, "//*[contains(@name, 'profile-stake')]")  
+    stake_input.send_keys(500)
+    stake_input.send_keys(Keys.RETURN)
+    submit_button = self.driver.find_element(By.XPATH, "//*[contains(@type, 'submit')]")  
+    submit_button.submit() 
+    time.sleep(5)
+      
+
+    
 
 
     

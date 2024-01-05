@@ -22,10 +22,11 @@ def sign_in(self, account):
     password_input = self.driver.find_element(By.XPATH, "//*[contains(@name, 'password')]")
     password_input.send_keys(account["password"]) 
     password_input.send_keys(Keys.RETURN)
-    time.sleep(3)  
+    time.sleep(5)  
     seed_submit_button =  self.driver.find_element(By.ID, "seed-submit-button")
     # print(seed_submit_button)
     seed_submit_button.submit() 
+    time.sleep(5)  
     
 
 def sign_in_contract(self, account):
@@ -34,7 +35,9 @@ def sign_in_contract(self, account):
     )
     input_password = self.driver.find_element(By.ID, "input-password")
     input_password.send_keys(account["password"])
-    input_password.send_keys(Keys.RETURN)
+    time.sleep(5) 
+    input_password.send_keys(Keys.RETURN)     
     submit_button = self.driver.find_element(By.XPATH, "//*[contains(@type, 'submit')]")  
     submit_button.submit()
+    time.sleep(20)  
      
