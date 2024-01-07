@@ -55,9 +55,12 @@ class ProfileValidationTests(unittest.TestCase):
     def test_add_profile_stake(self):
         print("test_add_profile_stake")
         sign_in(self, account_info['bob'])
-        add_profile_stake(self, account_info['alice'])
+        add_profile_stake(self, account_info['alice'], 500)
         sign_in_contract(self, account_info['bob'])
         time.sleep(10)
+        sign_in(self, account_info['alice_stash'])
+        add_profile_stake(self, account_info['alice'], 500)
+        sign_in_contract(self, account_info['alice_stash'])
         
         
 

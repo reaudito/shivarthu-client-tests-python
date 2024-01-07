@@ -17,7 +17,7 @@ account_info = {
 # Accounts with initial balance
 
 # ```
-# aliceu
+# alice
 # alice_stash
 # bob
 # bob_stash
