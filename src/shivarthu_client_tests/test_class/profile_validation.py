@@ -10,7 +10,6 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.action_chains import ActionChains
 import time
-import os
 import csv
 from datetime import datetime, timedelta
 from selenium.webdriver.firefox.service import Service as FirefoxService
@@ -21,7 +20,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 import os
 import unittest
 from utils.config import Config
-from utils.profile_validation_functions import add_profile, view_profile_details, add_profile_stake
+from utils.profile_validation_functions import add_profile, view_profile_details, add_profile_stake, add_challenge_evidence, add_profile_stake
 from utils.account_info import account_info
 from utils.common_functions import sign_in, sign_in_contract
 
@@ -61,8 +60,35 @@ class ProfileValidationTests(unittest.TestCase):
         sign_in(self, account_info['alice_stash'])
         add_profile_stake(self, account_info['alice'], 500)
         sign_in_contract(self, account_info['alice_stash'])
+    
+    def test_challenge_evidence(self):
+        print("test_challenge_evidence")
+        sign_in(self, account_info['bob_stash'])
+        add_challenge_evidence(self, account_info['alice'], 5)
+        sign_in_contract(self, account_info['bob_stash'])
+    
+    def test_juror_stake(self):
+        print("test_juror_stake")
+        sign_in(self, account_info['charlie'])
+        add_profile_stake(self, account_info['alice'], 100)
+        sign_in_contract(self, account_info['charlie'])
+        sign_in(self, account_info['dave'])
+        add_profile_stake(self, account_info['alice'], 100)
+        sign_in_contract(self, account_info['dave'])
+        sign_in(self, account_info['eve'])
+        add_profile_stake(self, account_info['alice'], 100)
+        sign_in_contract(self, account_info['eve'])
+        sign_in(self, account_info['ferdie'])
+        add_profile_stake(self, account_info['alice'], 100)
+        sign_in_contract(self, account_info['ferdie'])
+        sign_in(self, account_info['charlie_stash'])
+        add_profile_stake(self, account_info['alice'], 100)
+        sign_in_contract(self, account_info['charlie_stash'])
+        
+
         
         
+               
 
     def tearDown(self):
         # Close the browser window
