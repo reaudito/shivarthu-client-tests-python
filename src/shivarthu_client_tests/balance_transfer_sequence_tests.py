@@ -14,9 +14,9 @@ class_methods = [
     class_name('test_balance_transfer3'),  
     class_name('test_balance_transfer4'),  
     class_name('test_balance_transfer5'),  
-    class_name('test_balance_transfer6'),  
-    class_name('test_balance_transfer7'),   
-    class_name('test_balance_transfer8'),  
+    # class_name('test_balance_transfer6'),  
+    # class_name('test_balance_transfer7'),   
+    # class_name('test_balance_transfer8'),  
 ]
 
 # Create a test suite

@@ -20,7 +20,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 import os
 import unittest
 from utils.config import Config
-from utils.profile_validation_functions import add_profile, view_profile_details, add_profile_stake, add_challenge_evidence, add_profile_stake
+from utils.profile_validation_functions import add_profile, view_profile_details, add_profile_stake, add_challenge_evidence, add_juror_stake
 from utils.account_info import account_info
 from utils.common_functions import sign_in, sign_in_contract
 
@@ -64,25 +64,25 @@ class ProfileValidationTests(unittest.TestCase):
     def test_challenge_evidence(self):
         print("test_challenge_evidence")
         sign_in(self, account_info['bob_stash'])
-        add_challenge_evidence(self, account_info['alice'], 5)
+        add_challenge_evidence(self, account_info['alice'], 10)
         sign_in_contract(self, account_info['bob_stash'])
     
     def test_juror_stake(self):
         print("test_juror_stake")
         sign_in(self, account_info['charlie'])
-        add_profile_stake(self, account_info['alice'], 100)
+        add_juror_stake(self, account_info['alice'], 100)
         sign_in_contract(self, account_info['charlie'])
         sign_in(self, account_info['dave'])
-        add_profile_stake(self, account_info['alice'], 100)
+        add_juror_stake(self, account_info['alice'], 500)
         sign_in_contract(self, account_info['dave'])
         sign_in(self, account_info['eve'])
-        add_profile_stake(self, account_info['alice'], 100)
+        add_juror_stake(self, account_info['alice'], 1000)
         sign_in_contract(self, account_info['eve'])
         sign_in(self, account_info['ferdie'])
-        add_profile_stake(self, account_info['alice'], 100)
+        add_juror_stake(self, account_info['alice'], 1500)
         sign_in_contract(self, account_info['ferdie'])
         sign_in(self, account_info['charlie_stash'])
-        add_profile_stake(self, account_info['alice'], 100)
+        add_juror_stake(self, account_info['alice'], 2000)
         sign_in_contract(self, account_info['charlie_stash'])
         
 

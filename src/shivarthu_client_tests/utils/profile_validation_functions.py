@@ -77,7 +77,7 @@ def add_challenge_evidence(self, for_account, wait_time_in_min):
     submit_button.submit() 
     time.sleep(5)
 
-def add_profile_stake(self, for_account, stake):
+def add_juror_stake(self, for_account, stake):
     self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])
     time.sleep(5)
     juror_stake_input = self.driver.find_element(By.XPATH, "//*[contains(@name, 'juror-stake')]")  
