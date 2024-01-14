@@ -64,7 +64,7 @@ class ProfileValidationTests(unittest.TestCase):
     def test_challenge_evidence(self):
         print("test_challenge_evidence")
         sign_in(self, account_info['bob_stash'])
-        add_challenge_evidence(self, account_info['alice'], 10)
+        add_challenge_evidence(self, account_info['alice'], 60)
         sign_in_contract(self, account_info['bob_stash'])
     
     def test_juror_stake(self):
@@ -84,11 +84,7 @@ class ProfileValidationTests(unittest.TestCase):
         sign_in(self, account_info['charlie_stash'])
         add_juror_stake(self, account_info['alice'], 2000)
         sign_in_contract(self, account_info['charlie_stash'])
-        
-
-        
-        
-               
+              
 
     def tearDown(self):
         # Close the browser window

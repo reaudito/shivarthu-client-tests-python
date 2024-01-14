@@ -63,9 +63,9 @@ def add_profile_stake(self, for_account, stake):
     submit_button.submit() 
     time.sleep(5)
       
-def add_challenge_evidence(self, for_account, wait_time_in_min):
+def add_challenge_evidence(self, for_account, sec_time):
     self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])
-    time.sleep(wait_time_in_min*60)
+    time.sleep(sec_time)
     evidence_details = self.driver.find_element(By.XPATH, "//*[contains(@name, 'details')]")  
     evidence_details_data = """
     This is an invalid profile
@@ -84,7 +84,7 @@ def add_juror_stake(self, for_account, stake):
     juror_stake_input.send_keys(stake)
     juror_stake_input.send_keys(Keys.RETURN)
     time.sleep(5) 
-    submit_button = self.driver.find_element(By.XPATH, "//*[contains(@type, 'submit')]")  
+    submit_button = self.driver.find_element(By.ID, "juror-stake") 
     submit_button.submit() 
     time.sleep(5)
     

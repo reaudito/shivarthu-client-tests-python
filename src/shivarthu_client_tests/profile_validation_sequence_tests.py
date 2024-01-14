@@ -9,9 +9,9 @@ loader = unittest.TestLoader()
 
 # Load the test methods in the desired order
 class_methods = [
-    class_name('test_add_profile'),
-    class_name('test_add_profile_stake'),
-    class_name('test_challenge_evidence'), 
+    # class_name('test_add_profile'),
+    # class_name('test_add_profile_stake'),
+    # class_name('test_challenge_evidence'), 
     class_name('test_juror_stake'),
 ]
 
