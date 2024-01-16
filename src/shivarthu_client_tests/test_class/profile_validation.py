@@ -20,7 +20,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 import os
 import unittest
 from utils.config import Config
-from utils.profile_validation_functions import add_profile, view_profile_details, add_profile_stake, add_challenge_evidence, add_juror_stake
+from utils.profile_validation_functions import add_profile, view_profile_details, add_profile_stake, add_challenge_evidence, add_juror_stake, change_period
 from utils.account_info import account_info
 from utils.common_functions import sign_in, sign_in_contract
 
@@ -84,6 +84,13 @@ class ProfileValidationTests(unittest.TestCase):
         sign_in(self, account_info['charlie_stash'])
         add_juror_stake(self, account_info['alice'], 2000)
         sign_in_contract(self, account_info['charlie_stash'])
+    
+    def test_change_period(self):
+        print("testt change period")
+        change_period(self, account_info['alice'])
+        sign_in_contract(self, account_info['charlie_stash'])
+
+        
               
 
     def tearDown(self):

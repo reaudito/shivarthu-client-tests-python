@@ -88,8 +88,12 @@ def add_juror_stake(self, for_account, stake):
     submit_button.submit() 
     time.sleep(5)
     
-
-    
+def change_period(self, for_account):
+    self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])  
+    time.sleep(5)
+    submit_button = self.driver.find_element(By.ID, "change-period")
+    submit_button.submit()
+    time.sleep(5)
 
 
     
