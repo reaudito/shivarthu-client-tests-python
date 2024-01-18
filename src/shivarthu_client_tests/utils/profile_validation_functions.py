@@ -88,13 +88,23 @@ def add_juror_stake(self, for_account, stake):
     submit_button.submit() 
     time.sleep(5)
     
-def change_period(self, for_account):
+def change_period(self, for_account, wait_time):
     self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])  
-    time.sleep(5)
+    time.sleep(wait_time)
     submit_button = self.driver.find_element(By.ID, "change-period")
     submit_button.submit()
     time.sleep(5)
+    
 
+def draw_juror(self, for_account, count):
+    self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])
+    time.sleep(5)
+    draw_juror = self.driver.find_element(By.ID, "iterations")
+    draw_juror.send_keys(count)
+    draw_juror.send_keys(Keys.RETURN)
+    time.sleep(5)
+    submit_button = self.driver.find_element(By.ID, "draw-jurors-submit")
+    submit_button.submit()
 
     
 

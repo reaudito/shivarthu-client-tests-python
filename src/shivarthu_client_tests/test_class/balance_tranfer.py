@@ -41,38 +41,38 @@ class BalanceTransfers(unittest.TestCase):
     
     def test_balance_transfer(self):
         sign_in(self, account_info['bob'])
-        add_balance_tranfer(self, account_info['charlie'], 10000000)
+        add_balance_tranfer(self, account_info['charlie'], 1000000000000000)
         sign_in_contract(self, account_info['bob'])
         # sign_in(self, account_info['bob'])
         # add_balance_tranfer(self, account_info['dave'], 10000000)
         # sign_in_contract(self, account_info['bob'])
     def test_balance_transfer2(self):
         sign_in(self, account_info['bob'])
-        add_balance_tranfer(self, account_info['dave'], 10000000)
+        add_balance_tranfer(self, account_info['dave'], 1000000000000000)
         sign_in_contract(self, account_info['bob'])
     def test_balance_transfer3(self):
         sign_in(self, account_info['bob'])
-        add_balance_tranfer(self, account_info['eve'], 10000000)
+        add_balance_tranfer(self, account_info['eve'], 1000000000000000)
         sign_in_contract(self, account_info['bob'])
     def test_balance_transfer4(self):
         sign_in(self, account_info['bob'])
-        add_balance_tranfer(self, account_info['ferdie'], 10000000)
+        add_balance_tranfer(self, account_info['ferdie'], 1000000000000000)
         sign_in_contract(self, account_info['bob'])
     def test_balance_transfer5(self):
         sign_in(self, account_info['bob'])
-        add_balance_tranfer(self, account_info['charlie_stash'], 10000000)
+        add_balance_tranfer(self, account_info['charlie_stash'], 1000000000000000)
         sign_in_contract(self, account_info['bob'])
     def test_balance_transfer6(self):
         sign_in(self, account_info['bob'])
-        add_balance_tranfer(self, account_info['dave_stash'], 10000000)
+        add_balance_tranfer(self, account_info['dave_stash'], 1000000000000000)
         sign_in_contract(self, account_info['bob'])
     def test_balance_transfer7(self):
         sign_in(self, account_info['bob'])
-        add_balance_tranfer(self, account_info['eve_stash'], 10000000)
+        add_balance_tranfer(self, account_info['eve_stash'], 1000000000000000)
         sign_in_contract(self, account_info['bob'])
     def test_balance_transfer8(self):
         sign_in(self, account_info['bob'])
-        add_balance_tranfer(self, account_info['ferdie_stash'], 10000000)
+        add_balance_tranfer(self, account_info['ferdie_stash'], 1000000000000000)
         sign_in_contract(self, account_info['bob'])
         
         
