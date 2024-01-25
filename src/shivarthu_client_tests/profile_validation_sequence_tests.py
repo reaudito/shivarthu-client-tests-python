@@ -13,9 +13,9 @@ class_methods = [
     class_name('test_add_profile_stake'),
     class_name('test_challenge_evidence'), 
     class_name('test_juror_stake'),
-    class_name('test_change_period_from_evidence'),
+    class_name('test_change_period'),
     class_name('test_draw_juror'),
-    class_name('test_change_period_from_staking')
+    class_name('test_change_period_from_drawing')
 ]
 
 # Create a test suite

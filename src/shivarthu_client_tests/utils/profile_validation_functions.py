@@ -63,9 +63,24 @@ def add_profile_stake(self, for_account, stake):
     submit_button.submit() 
     time.sleep(5)
       
-def add_challenge_evidence(self, for_account, sec_time):
+def add_challenge_evidence(self, for_account):
     self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])
-    time.sleep(sec_time)
+    # Find the element by ID
+    element = self.driver.find_element(By.ID, "end-period-time")
+
+    # Get the initial value
+    initial_value = element.get_attribute("innerHTML")
+    print(f"Initial value: {initial_value}")
+
+    # Check if the value changes to 0
+    while True:
+        current_value = element.get_attribute("innerHTML")
+        if current_value == "0":
+            print("Value changed to 0")
+            break
+
+        # Add a sleep or wait here to avoid continuous polling and CPU usage
+        time.sleep(1)
     evidence_details = self.driver.find_element(By.XPATH, "//*[contains(@name, 'details')]")  
     evidence_details_data = """
     This is an invalid profile
@@ -88,9 +103,25 @@ def add_juror_stake(self, for_account, stake):
     submit_button.submit() 
     time.sleep(5)
     
-def change_period(self, for_account, wait_time):
-    self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])  
-    time.sleep(wait_time)
+def change_period(self, for_account):
+    self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])
+    time.sleep(5) 
+     # Find the element by ID
+    element = self.driver.find_element(By.ID, "end-period-time")
+     # Get the initial value
+    initial_value = element.get_attribute("innerHTML")
+    print(f"Initial value: {initial_value}")
+
+    # Check if the value changes to 0
+    while True:
+        current_value = element.get_attribute("innerHTML")
+        if current_value == "0":
+            print("Value changed to 0")
+            break
+
+        # Add a sleep or wait here to avoid continuous polling and CPU usage
+        time.sleep(1)  
+    
     submit_button = self.driver.find_element(By.ID, "change-period")
     submit_button.submit()
     time.sleep(5)
@@ -105,6 +136,29 @@ def draw_juror(self, for_account, count):
     time.sleep(5)
     submit_button = self.driver.find_element(By.ID, "draw-jurors-submit")
     submit_button.submit()
+
+def change_period_from_drawing(self, for_account):
+    self.driver.get(Config.BASE_URL + "/schelling-game/" + for_account['public_key'])
+    time.sleep(5) 
+     # Find the element by ID
+    element = self.driver.find_element(By.ID, "end-drawing-period-time")
+     # Get the initial value
+    initial_value = element.get_attribute("innerHTML")
+    print(f"Initial value: {initial_value}")
+
+    # Check if the value changes to 0
+    while True:
+        current_value = element.get_attribute("innerHTML")
+        if current_value == "true":
+            print("Value changed to true")
+            break
+
+        # Add a sleep or wait here to avoid continuous polling and CPU usage
+        time.sleep(1)  
+    
+    submit_button = self.driver.find_element(By.ID, "change-period")
+    submit_button.submit()
+    time.sleep(5)
 
     
 

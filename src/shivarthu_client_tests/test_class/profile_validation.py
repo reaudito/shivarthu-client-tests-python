@@ -20,7 +20,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 import os
 import unittest
 from utils.config import Config
-from utils.profile_validation_functions import add_profile, view_profile_details, add_profile_stake, add_challenge_evidence, add_juror_stake, change_period, draw_juror
+from utils.profile_validation_functions import add_profile, view_profile_details, add_profile_stake, add_challenge_evidence, add_juror_stake, change_period, draw_juror, change_period_from_drawing
 from utils.account_info import account_info
 from utils.common_functions import sign_in, sign_in_contract
 # from utils.gecko_path import gecko_driver_path
@@ -67,7 +67,7 @@ class ProfileValidationTests(unittest.TestCase):
     def test_challenge_evidence(self):
         print("test_challenge_evidence")
         sign_in(self, account_info['bob_stash'])
-        add_challenge_evidence(self, account_info['alice'], 60)
+        add_challenge_evidence(self, account_info['alice'])
         sign_in_contract(self, account_info['bob_stash'])
     
     def test_juror_stake(self):
@@ -88,30 +88,23 @@ class ProfileValidationTests(unittest.TestCase):
         add_juror_stake(self, account_info['alice'], 2000)
         sign_in_contract(self, account_info['charlie_stash'])
     
-    def test_change_period_from_evidence(self):
+    def test_change_period(self):
         print("test change period")
         sign_in(self, account_info['bob'])
-        change_period(self, account_info['alice'], 10)
+        change_period(self, account_info['alice'])
         sign_in_contract(self, account_info['bob'])
-        sleep(60)
-        
-    def test_change_period_from_staking(self):
-        print("test change period")
-        sign_in(self, account_info['bob'])
-        change_period(self, account_info['alice'], 600)
-        sign_in_contract(self, account_info['bob'])
-        sleep(60)
     
     def test_draw_juror(self):
         print("test juror stake")
         sign_in(self, account_info['bob'])
         draw_juror(self, account_info['alice'], 5)
         sign_in_contract(self, account_info['bob'])
-        sleep(60)
         
-        
-
-        
+    def test_change_period_from_drawing(self):
+        print("test change period")
+        sign_in(self, account_info['bob'])
+        change_period_from_drawing(self, account_info['alice'])
+        sign_in_contract(self, account_info['bob'])
               
 
     def tearDown(self):
